@@ -7,10 +7,6 @@ import { colors, spacing } from "../theme"
 import { isRTL } from "../i18n"
 import { useStores } from "../models"
 
-/**
- * @param {string} url - The URL to open in the browser.
- * @returns {void} - No return value.
- */
 function openLinkInBrowser(url: string) {
   Linking.canOpenURL(url).then((canOpen) => canOpen && Linking.openURL(url))
 }
@@ -23,8 +19,6 @@ export const DemoDebugScreen: FC<DemoTabScreenProps<"DemoDebug">> = function Dem
   } = useStores()
 
   const usingHermes = typeof HermesInternal === "object" && HermesInternal !== null
-  // @ts-expect-error
-  const usingFabric = global.nativeFabricUIManager != null
 
   const demoReactotron = React.useMemo(
     () => async () => {
@@ -94,14 +88,6 @@ export const DemoDebugScreen: FC<DemoTabScreenProps<"DemoDebug">> = function Dem
             </View>
           }
         />
-        <ListItem
-          LeftComponent={
-            <View style={$item}>
-              <Text preset="bold">Fabric Enabled</Text>
-              <Text>{String(usingFabric)}</Text>
-            </View>
-          }
-        />
       </View>
       <View style={$buttonContainer}>
         <Button style={$button} tx="demoDebugScreen.reactotron" onPress={demoReactotron} />
@@ -152,3 +138,5 @@ const $hint: TextStyle = {
   lineHeight: 15,
   paddingBottom: spacing.lg,
 }
+
+// @demo remove-file

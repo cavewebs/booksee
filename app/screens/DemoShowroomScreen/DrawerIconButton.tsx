@@ -1,21 +1,24 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Pressable, PressableProps, ViewStyle } from "react-native"
-import Animated, { interpolate, interpolateColor, useAnimatedStyle } from "react-native-reanimated"
-import { useDrawerProgress } from "react-native-drawer-layout"
+import Animated, {
+  interpolate,
+  interpolateColor,
+  useAnimatedStyle,
+  withSpring,
+} from "react-native-reanimated"
+import type { SharedValue } from "react-native-reanimated"
 import { isRTL } from "../../i18n"
 import { colors, spacing } from "../../theme"
 
-interface DrawerIconButtonProps extends PressableProps {}
+interface DrawerIconButtonProps extends PressableProps {
+  open: boolean
+  progress: SharedValue<number>
+}
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
-/**
- * @param {DrawerIconButtonProps} props - The props for the `DrawerIconButton` component.
- * @returns {JSX.Element} The rendered `DrawerIconButton` component.
- */
 export function DrawerIconButton(props: DrawerIconButtonProps) {
-  const { ...PressableProps } = props
-  const progress = useDrawerProgress()
+  const { open, progress, ...PressableProps } = props
 
   const animatedContainerStyles = useAnimatedStyle(() => {
     const translateX = interpolate(progress.value, [0, 1], [0, isRTL ? 60 : -60])
@@ -67,6 +70,10 @@ export function DrawerIconButton(props: DrawerIconButtonProps) {
     }
   })
 
+  useEffect(() => {
+    progress.value = withSpring(open ? 1 : 0)
+  }, [open, progress])
+
   return (
     <AnimatedPressable {...PressableProps} style={[$container, animatedContainerStyles]}>
       <Animated.View style={[$topBar, animatedTopBarStyles]} />
@@ -99,3 +106,5 @@ const $middleBar: ViewStyle = {
 const $bottomBar: ViewStyle = {
   height: barHeight,
 }
+
+// @demo remove-file

@@ -1,13 +1,14 @@
 /* eslint-disable react/jsx-key, react-native/no-inline-styles */
 import React from "react"
 import { TextStyle, View, ViewStyle } from "react-native"
-import { Icon, ListItem, ListView, Text } from "../../../components"
+import { FlatList } from "react-native-gesture-handler"
+import { Icon, ListItem, Text } from "../../../components"
 import { colors, spacing } from "../../../theme"
 import { Demo } from "../DemoShowroomScreen"
 import { DemoDivider } from "../DemoDivider"
 import { DemoUseCase } from "../DemoUseCase"
 
-const listData =
+const flatListData =
   `Tempor Id Ea Aliqua Pariatur Aliquip. Irure Minim Voluptate Consectetur Consequat Sint Esse Proident Irure. Nostrud Elit Veniam Nostrud Excepteur Minim Deserunt Quis Dolore Velit Nulla Irure Voluptate Tempor. Occaecat Amet Laboris Nostrud Qui Do Quis Lorem Ex Elit Fugiat Deserunt. In Pariatur Excepteur Exercitation Ex Incididunt Qui Mollit Dolor Sit Non. Culpa Officia Minim Cillum Exercitation Voluptate Proident Laboris Et Est Reprehenderit Quis Pariatur Nisi`
     .split(".")
     .map((item) => item.trim())
@@ -35,10 +36,11 @@ const $customContainerStyle: ViewStyle = {
   borderTopColor: colors.palette.neutral100,
 }
 
-const $listStyle: ViewStyle = {
-  height: 148,
+const $flatListStyle: ViewStyle = {
   paddingHorizontal: spacing.xs,
   backgroundColor: colors.palette.neutral200,
+  flex: 1,
+  overflow: "scroll",
 }
 
 export const DemoListItem: Demo = {
@@ -143,13 +145,13 @@ export const DemoListItem: Demo = {
     </DemoUseCase>,
 
     <DemoUseCase
-      name="Integrating w/ FlatList & FlashList"
+      name="Integrating w/ FlatList"
       description="The component can be easily integrated with your favorite list interface."
     >
-      <View style={$listStyle}>
-        <ListView<string>
-          data={listData}
-          estimatedItemSize={59}
+      <View style={{ height: 148 }}>
+        <FlatList<string>
+          data={flatListData}
+          style={$flatListStyle}
           renderItem={({ item, index }) => (
             <ListItem
               text={item}
@@ -198,3 +200,5 @@ export const DemoListItem: Demo = {
     </DemoUseCase>,
   ],
 }
+
+// @demo remove-file

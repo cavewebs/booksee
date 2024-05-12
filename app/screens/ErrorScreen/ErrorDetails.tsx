@@ -5,15 +5,10 @@ import { colors, spacing } from "../../theme"
 
 export interface ErrorDetailsProps {
   error: Error
-  errorInfo: ErrorInfo | null
+  errorInfo: ErrorInfo
   onReset(): void
 }
 
-/**
- * Renders the error details screen.
- * @param {ErrorDetailsProps} props - The props for the `ErrorDetails` component.
- * @returns {JSX.Element} The rendered `ErrorDetails` component.
- */
 export function ErrorDetails(props: ErrorDetailsProps) {
   return (
     <Screen
@@ -32,7 +27,7 @@ export function ErrorDetails(props: ErrorDetailsProps) {
         <Text
           selectable
           style={$errorBacktrace}
-          text={`${props.errorInfo?.componentStack ?? ""}`.trim()}
+          text={`${props.errorInfo.componentStack}`.trim()}
         />
       </ScrollView>
 
