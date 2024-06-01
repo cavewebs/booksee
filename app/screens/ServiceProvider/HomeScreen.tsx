@@ -129,7 +129,7 @@ export const ServiceProviderHomeScreen: FC<HomeScreenProps> = observer(function 
         ))}
       </View>
       <Booking data={dataToShow} />
-      <SectionText subheading="Previous Work" text="View All" onPress={() => goTo("Bookings")} />
+      <SectionText subheading="Previous Work" text="View All" onPress={() => goTo("PreviousWork")} />
       <View style={{ marginBottom: 25 }}>
         <PreviousWork />
       </View>

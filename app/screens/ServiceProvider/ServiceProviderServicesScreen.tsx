@@ -14,6 +14,7 @@ import fifthBeard from "assets/images/trim-beard4.png"
 import sixthBeard from "assets/images/trim-beard5.png"
 import seventhBeard from "assets/images/trim-beard6.png"
 import { useNavigation } from "@react-navigation/native"
+import { PlusCircleIcon } from "lucide-react-native"
 // import { useStores } from "app/models"
 
 interface ServiceProviderServicesScreenProps
@@ -100,7 +101,7 @@ export const ServiceProviderServicesScreen: FC<ServiceProviderServicesScreenProp
                   style={{ color: colors.palette.primary600 }}
                 />
 
-                <Icon icon="add" />
+<PlusCircleIcon fill={colors.tint} color={colors.palette.neutral100} />
               </View>
             </View>
           </Pressable>

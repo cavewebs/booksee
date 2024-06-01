@@ -7,9 +7,9 @@ import { useStores } from "app/models"
 import { screenContentContainer } from "app/styles/mainStyles"
 import { colors, spacing } from "app/theme"
 import Checkbox from "expo-checkbox"
-import {  Toast, useToast, ToastDescription, ToastTitle, CheckCircleIcon, HStack, Icon as GsICon } from "@gluestack-ui/themed"
+import { Toast, useToast, ToastDescription, ToastTitle, CheckCircleIcon, HStack, Icon as GsICon } from "@gluestack-ui/themed"
 
-interface SelectUserTypeScreenProps extends AppStackScreenProps<"SelectUserType"> {}
+interface SelectUserTypeScreenProps extends AppStackScreenProps<"SelectUserType"> { }
 
 export const SelectUserTypeScreen: FC<SelectUserTypeScreenProps> = observer(
   function SelectUserTypeScreen(_props) {
@@ -71,9 +71,9 @@ export const SelectUserTypeScreen: FC<SelectUserTypeScreenProps> = observer(
     }
     return (
       <Screen
-      style={{flex: 1}}
+        style={{ flex: 1 }}
         preset="auto"
-        contentContainerStyle={[screenContentContainer, {flex: 1}]}
+        contentContainerStyle={[screenContentContainer, { flex: 1 }]}
         safeAreaEdges={["top", "bottom"]}
       >
         <View style={styles.container}>

@@ -1760,6 +1760,11 @@
     "@react-native-aria/utils" "0.2.11"
     "@react-stately/checkbox" "^3.4.2"
 
+"@gluestack-ui/config@^1.1.18":
+  version "1.1.18"
+  resolved "https://registry.yarnpkg.com/@gluestack-ui/config/-/config-1.1.18.tgz#10448fc4073c2664fa6799f08a59366d7c4fdc34"
+  integrity sha512-O7sP3cwxUNWMMBmrI7djR8M6xq1Gi5YdJuugBkJMcVwKgD8SzPbxACX20hONEMMua5hLwXPvVOzAX24WooxLkw==
+
 "@gluestack-ui/divider@0.1.8":
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/@gluestack-ui/divider/-/divider-0.1.8.tgz#114584279aebc8bf6b718d039c521330051d8e44"
@@ -2407,6 +2412,11 @@
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@legendapp/tools/-/tools-2.0.1.tgz#995fe6cb3e2398b939f645505aa8e1abc84bd07f"
   integrity sha512-Kxt0HWvWElRK6oybHRzcYxdgaKGwuaiRNreS7usW7QuHXRIHaH4yMcW2YNRG4DHE5fpefv+Bno/BohQcCE4FaA==
+
+"@lucide/lab@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@lucide/lab/-/lab-0.1.1.tgz#2552cc646b6e38676eb4b6fd5197417e8b2c21de"
+  integrity sha512-yv0QPDxfhzo0kYQSmA1KZzNgnzQZBcAkUs/ZEER0uyMCSQYQKCgZLWuxYOBr1EQ8TiBalmOO9JrOPryAY80kwA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -8019,6 +8029,11 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
+
+lucide-react-native@^0.381.0:
+  version "0.381.0"
+  resolved "https://registry.yarnpkg.com/lucide-react-native/-/lucide-react-native-0.381.0.tgz#5ce6943aaa736fe6417e5ec43e7d422159a7ec6d"
+  integrity sha512-RipRdw3Vm5nt+EL7BFBwO3I74ul4px+oHu0ZHwSgGEXvsWvV6NnKKPONOwG4a9+0/xkrFQjjQ+vVLb4VfrUWmQ==
 
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"

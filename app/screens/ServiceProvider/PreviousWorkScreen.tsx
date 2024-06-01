@@ -6,6 +6,7 @@ import { Header, Screen, Text, Icon, PreviousWork } from "app/components"
 import { screenContentContainer } from "app/styles/mainStyles"
 import { useNavigation } from "@react-navigation/native"
 import { colors } from "app/theme"
+import { PlusCircleIcon } from "lucide-react-native"
 // import { useStores } from "app/models"
 
 interface PreviousWorkScreenProps extends AppStackScreenProps<"PreviousWork"> { }
@@ -30,7 +31,7 @@ export const PreviousWorkScreen: FC<PreviousWorkScreenProps> = observer(
           <View style={{ flex: 1 }}>
             <Header title="previousWork" leftIcon="back" onLeftPress={() => navigation.goBack()} />
           </View>
-          {!isSelected && <Icon icon="add" style={{ flex: 1, marginTop: 33 }} />}
+          {!isSelected && <PlusCircleIcon size={24} fill={colors.tint} color={colors.palette.neutral100} style={{ flex: 1, marginTop: 33 }} />}
         </View>
         <View style={styles.endText}>
           {!isSelected && (

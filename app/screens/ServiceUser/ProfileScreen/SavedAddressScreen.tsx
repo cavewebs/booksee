@@ -10,6 +10,7 @@ import { address } from "app/components/serviceUser/DummyData/ProfileScreensData
 import { number } from "mobx-state-tree/dist/internal"
 import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
+import { Icon as LucideIcon, PlusCircleIcon } from 'lucide-react-native';
 
 interface SavedAddressScreenProps extends AppStackScreenProps<"SavedAddress"> { }
 
@@ -63,7 +64,7 @@ export const SavedAddressScreen: FC<SavedAddressScreenProps> = observer(
 
         <TouchableOpacity style={[styles.leftContainer, styles.newAddress]} onPress={() => navigation.navigate("AddNewAddress")}>
           <Text text="Add New Address" size="lg" style={styles.rightText} />
-          <Icon icon="add" size={24} />
+          <PlusCircleIcon size={24} fill={colors.tint} color={colors.palette.neutral100} />
         </TouchableOpacity>
       </Screen>
     )

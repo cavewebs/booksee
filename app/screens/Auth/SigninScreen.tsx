@@ -14,37 +14,17 @@ import {
   TextFieldAccessoryProps,
   Button,
 } from "app/components"
-// import { useNavigation } from "@react-navigation/native"
-// import { useStores } from "app/models"
 import { screenContentContainer } from "app/styles/mainStyles"
 import SplashImg1 from "assets/images/splash-1.png"
 import { colors, spacing } from "app/theme"
 import { useStores } from "app/models"
 
-import {
-  Icon as GSIcon,
-  // Checkbox,
-  Select,
-  ChevronDownIcon,
-  SelectTrigger,
-  SelectDragIndicatorWrapper,
-  SelectDragIndicator,
-  SelectBackdrop,
-  SelectIcon,
-  SelectInput,
-  SelectContent,
-  SelectPortal,
-} from "@gluestack-ui/themed"
 import FlagSelector from "app/components/Custom/FlagSelector"
 import { useNavigation } from "@react-navigation/native"
 
 interface SigninScreenProps extends AppStackScreenProps<"Signin"> {}
 
 export const SigninScreen: FC<SigninScreenProps> = observer(function SigninScreen() {
-  // Pull in one of our MST stores
-  // const { someStore, anotherStore } = useStores()
-
-  // Pull in navigation via hook
   const navigation = useNavigation()
   const authPasswordInput = useRef<TextInput>()
 

@@ -173,7 +173,7 @@ export function Button(props: ButtonProps) {
 }
 
 const $baseViewStyle: ViewStyle = {
-  minHeight: 56,
+  minHeight: 16,
   borderRadius: 4,
   justifyContent: "center",
   alignItems: "center",
@@ -187,6 +187,7 @@ const $baseTextStyle: TextStyle = {
   fontSize: 16,
   lineHeight: 20,
   fontFamily: typography.primary.medium,
+  color: colors.tint,
   textAlign: "center",
   flexShrink: 1,
   flexGrow: 0,
@@ -201,12 +202,15 @@ const $viewPresets = {
     $baseViewStyle,
     {
       borderWidth: 1,
-      borderColor: colors.palette.neutral400,
-      backgroundColor: colors.palette.neutral100,
+      borderColor: colors.palette.neutral100,
+      backgroundColor: colors.palette.primary50,
+      borderRadius: 100,
     },
   ] as StyleProp<ViewStyle>,
 
   filled: [$baseViewStyle, { backgroundColor: colors.palette.neutral300 }] as StyleProp<ViewStyle>,
+
+  primary: [$baseViewStyle, { backgroundColor: colors.tint, borderRadius: 100 }] as StyleProp<ViewStyle>,
 
   reversed: [
     $baseViewStyle,
@@ -218,16 +222,22 @@ const $textPresets: Record<Presets, StyleProp<TextStyle>> = {
   default: $baseTextStyle,
   filled: $baseTextStyle,
   reversed: [$baseTextStyle, { color: colors.palette.neutral100 }],
+  primary: [$baseTextStyle, { color: colors.palette.neutral100 }],
+
 }
 
 const $pressedViewPresets: Record<Presets, StyleProp<ViewStyle>> = {
   default: { backgroundColor: colors.palette.neutral200 },
   filled: { backgroundColor: colors.palette.neutral400 },
   reversed: { backgroundColor: colors.palette.neutral700 },
+  primary: { backgroundColor: colors.tint },
+
 }
 
 const $pressedTextPresets: Record<Presets, StyleProp<TextStyle>> = {
   default: { opacity: 0.9 },
   filled: { opacity: 0.9 },
   reversed: { opacity: 0.9 },
+  primary: { opacity: 0.9 },
+
 }
