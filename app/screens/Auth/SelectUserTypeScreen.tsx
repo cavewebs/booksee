@@ -1,21 +1,13 @@
 import React, { FC, useState } from "react"
 import { observer } from "mobx-react-lite"
-import { ViewStyle, View, StyleSheet, TouchableOpacity, } from "react-native"
+import { View, StyleSheet, TouchableOpacity, } from "react-native"
 import { AppStackScreenProps } from "app/navigators"
 import { Screen, Text, Button, Icon, } from "app/components"
 import { useStores } from "app/models"
 import { screenContentContainer } from "app/styles/mainStyles"
 import { colors, spacing } from "app/theme"
 import Checkbox from "expo-checkbox"
-import {
-  Toast,
-  useToast,
-  ToastDescription,
-  ToastTitle,
-  CheckCircleIcon,
-  HStack,
-  Icon as GsICon,
-} from "@gluestack-ui/themed"
+import {  Toast, useToast, ToastDescription, ToastTitle, CheckCircleIcon, HStack, Icon as GsICon } from "@gluestack-ui/themed"
 
 interface SelectUserTypeScreenProps extends AppStackScreenProps<"SelectUserType"> {}
 
