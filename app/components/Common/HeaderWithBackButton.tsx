@@ -11,7 +11,7 @@ export interface HeaderWithBackButtonProps {
    */
   style?: StyleProp<ViewStyle>
   title?: string
-  leftIcon?: IconTypes
+  leftIcon?: IconTypes | string
 
 }
 

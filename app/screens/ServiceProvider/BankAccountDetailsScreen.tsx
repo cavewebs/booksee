@@ -64,7 +64,7 @@ export const BankAccountDetailsScreen: FC<BankAccountDetailsScreenProps> = obser
             <TextField
               value={accNumber}
               onChangeText={(value) => setAccNumber(value)}
-              placeholder="0237154436"
+              placeholder="00000000"
             />
           </View>
 
@@ -80,7 +80,7 @@ export const BankAccountDetailsScreen: FC<BankAccountDetailsScreenProps> = obser
             <TextField
               value={confirmNum}
               onChangeText={(value) => setConfirmNum(value)}
-              placeholder="0237154436"
+              placeholder="00000000"
             />
           </View>
 
@@ -96,7 +96,7 @@ export const BankAccountDetailsScreen: FC<BankAccountDetailsScreenProps> = obser
             <TextField
               value={holderName}
               onChangeText={(value) => setHolderName(value)}
-              placeholder="Ayominde Gbenga"
+              placeholder="Example Account Holder"
             />
           </View>
 

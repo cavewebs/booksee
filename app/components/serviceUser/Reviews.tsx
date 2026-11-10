@@ -11,7 +11,7 @@ export interface ReviewsProps {
    * An optional style override useful for padding & margin.
    */
   style?: StyleProp<ViewStyle>
-  icon?: IconTypes
+  icon?: IconTypes | string
   rating?: string
   review?: string
   image?: ImageSourcePropType

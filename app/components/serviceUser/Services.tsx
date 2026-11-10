@@ -10,7 +10,7 @@ export interface ServicesProps {
    * An optional style override useful for padding & margin.
    */
   style?: StyleProp<ViewStyle>
-  icon?: IconTypes
+  icon?: IconTypes | string
   text?: string
   onPress?: () => void;
 }

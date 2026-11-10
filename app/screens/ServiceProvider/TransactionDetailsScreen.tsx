@@ -40,7 +40,7 @@ export const TransactionDetailsScreen: FC<TransactionDetailsScreenProps> = obser
             <Text
               preset="default"
               size="xs"
-              text="anitajoseph@gmail.com"
+              text="anita@example.com"
               style={{
                 fontWeight: "400",
                 textAlign: "center",

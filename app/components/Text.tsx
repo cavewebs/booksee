@@ -104,6 +104,8 @@ const $presets = {
 
   formLabel: [$baseStyle, $fontWeightStyles.medium] as StyleProp<TextStyle>,
 
+  label: [$baseStyle, $fontWeightStyles.medium] as StyleProp<TextStyle>,
+
   formHelper: [$baseStyle, $sizeStyles.sm, $fontWeightStyles.normal] as StyleProp<TextStyle>,
 }
 
