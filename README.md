@@ -1,164 +1,146 @@
-# Welcome to your new ignited app!
+# Booksee
 
-[![CircleCI](https://circleci.com/gh/infinitered/ignite.svg?style=svg)](https://circleci.com/gh/infinitered/ignite)
+A React Native app for booking local salon and beauty services. Customers search providers, book hair, nails, beard, and makeup work, and pay from a mock checkout. Providers list services, set availability, and track bookings and earnings.
 
-## The latest and greatest boilerplate for Infinite Red opinions
+The app is an Expo client. Auth, bookings, cards, and bank details are mocked in the UI. There is no Booksee backend in this repo. The HTTP client still talks to the Ignite demo rss2json feed used by the leftover podcast screens.
 
-This is the boilerplate that [Infinite Red](https://infinite.red) uses as a way to test bleeding-edge changes to our React Native stack.
+Owner: Timchosen Uzua. Licensed under MIT.
 
-Currently includes:
+## Stack
 
-- React Native
-- React Navigation
-- MobX State Tree
-- TypeScript
-- And more!
+- Expo SDK 50, React Native 0.73, React 18, TypeScript 5.3
+- React Navigation 6 (native stack and bottom tabs)
+- MobX State Tree for auth, onboarding, and walkthrough state
+- Gluestack UI (`@gluestack-ui/themed`) plus custom components in `app/components`
+- apisauce for HTTP
+- i18n-js (en, ar, fr, ko). Most Booksee screens use hardcoded English strings
+- Expo Application Services (`eas.json`) for iOS and Android builds
+- Jest (`jest-expo`) and Maestro flows in `.maestro/`
+- Scaffolded from [Ignite](https://github.com/infinitered/ignite) 9.6.3 (MIT)
 
-## Quick Start
+User types in `AuthenticationStore`:
 
-The Ignite boilerplate project's structure will look similar to this:
+- `su` - service user (customer)
+- `sp` - service provider
 
-```
-ignite-project
-├── app
-│   ├── components
-│   ├── config
-│   ├── i18n
-│   ├── models
-│   ├── navigators
-│   ├── screens
-│   ├── services
-│   ├── theme
-│   ├── utils
-│   └── app.tsx
-├── assets
-│   ├── icons
-│   └── images
-├── test
-│   ├── __snapshots__
-│   ├── mockFile.ts
-│   └── setup.ts
-├── README.md
-├── android
-│   ├── app
-│   ├── build.gradle
-│   ├── gradle
-│   ├── gradle.properties
-│   ├── gradlew
-│   ├── gradlew.bat
-│   ├── keystores
-│   └── settings.gradle
-├── ignite
-│   └── templates
-|       |── app-icon
-│       ├── component
-│       ├── model
-│       ├── navigator
-│       └── screen
-├── index.js
-├── ios
-│   ├── IgniteProject
-│   ├── IgniteProject-tvOS
-│   ├── IgniteProject-tvOSTests
-│   ├── IgniteProject.xcodeproj
-│   └── IgniteProjectTests
-├── .env
-└── package.json
+The live navigator is `app/navigators/AppNavigator.tsx`. After the splash walkthrough, unauthenticated users hit login and signup. Authenticated users land on `ServiceUserNavigator` or `ServiceProviderNavigator`.
 
+## Requirements
+
+- Node.js 18 or newer (`package.json` engines)
+- Yarn 1.x (this repo has `yarn.lock`)
+- For a device or simulator: Expo Go, or a native build via EAS / `expo prebuild`
+
+`android/` and `ios/` are gitignored. Generate them with `yarn prebuild:clean` when you need native projects.
+
+## Local setup
+
+```sh
+git clone https://github.com/cavewebs/booksee.git
+cd booksee
+cp .env.example .env
+yarn
 ```
 
-### ./app directory
+`.env.example` lists every environment variable the app code reads. Expo inlines `EXPO_PUBLIC_*` when Metro bundles.
 
-Included in an Ignite boilerplate project is the `app` directory. This is a directory you would normally have to create when using vanilla React Native.
+| Variable | Read in | Purpose |
+| --- | --- | --- |
+| `EXPO_PUBLIC_API_URL` | `app/config/config.dev.ts`, `app/config/config.prod.ts` | Base URL for `app/services/api/api.ts` |
 
-The inside of the `app` directory looks similar to the following:
+Dev falls back to `https://api.rss2json.com/v1/` (Ignite podcast demo). Production falls back to `https://api.example.com/`.
 
-```
-app
-├── components
-├── config
-├── i18n
-├── models
-├── navigators
-├── screens
-├── services
-├── theme
-├── utils
-└── app.tsx
-```
+The maps screen (`app/screens/ServiceUser/MapSearchScreen.tsx`) renders `react-native-maps` with no API key in JavaScript. A Google Maps key belongs in native config after `expo prebuild`, not in this JS bundle.
 
-**components**
-This is where your reusable components live which help you build your screens.
+## Run locally
 
-**i18n**
-This is where your translations will live if you are using `react-native-i18n`.
+Install dependencies, then:
 
-**models**
-This is where your app's models will live. Each model has a directory which will contain the `mobx-state-tree` model file, test file, and any other supporting files like actions, types, etc.
-
-**navigators**
-This is where your `react-navigation` navigators will live.
-
-**screens**
-This is where your screen components will live. A screen is a React component which will take up the entire screen and be part of the navigation hierarchy. Each screen will have a directory containing the `.tsx` file, along with any assets or other helper files.
-
-**services**
-Any services that interface with the outside world will live here (think REST APIs, Push Notifications, etc.).
-
-**theme**
-Here lives the theme for your application, including spacing, colors, and typography.
-
-**utils**
-This is a great place to put miscellaneous helpers and utilities. Things like date helpers, formatters, etc. are often found here. However, it should only be used for things that are truly shared across your application. If a helper or utility is only used by a specific component or model, consider co-locating your helper with that component or model.
-
-**app.tsx** This is the entry point to your app. This is where you will find the main App component which renders the rest of the application.
-
-### ./assets directory
-
-This directory is designed to organize and store various assets, making it easy for you to manage and use them in your application. The assets are further categorized into subdirectories, including `icons` and `images`:
-
-```
-assets
-├── icons
-└── images
+```sh
+yarn compile          # TypeScript check (`tsc --noEmit`)
+yarn test             # Jest
+yarn start            # Expo / Metro bundler
 ```
 
-**icons**
-This is where your icon assets will live. These icons can be used for buttons, navigation elements, or any other UI components. The recommended format for icons is PNG, but other formats can be used as well.
+`yarn compile` is configured to pass on this WIP UI. `tsconfig.json` turns off unused-local and implicit-any checks, and some Booksee screens still start with `// @ts-nocheck` for leftover Gluestack and navigation typing. Tighten those as screens get wired to a real API.
 
-Ignite comes with a built-in `Icon` component. You can find detailed usage instructions in the [docs](https://github.com/infinitered/ignite/blob/master/docs/Components-Icon.md).
+Platform shortcuts: `yarn ios`, `yarn android`, `yarn web`.
 
-**images**
-This is where your images will live, such as background images, logos, or any other graphics. You can use various formats such as PNG, JPEG, or GIF for your images.
+`yarn lint` runs ESLint with `--fix` and Prettier over `App.tsx`, `app`, and `test`. It currently reports hundreds of preexisting issues (inline styles, unused vars, import order). That is not a merge gate yet.
 
-Another valuable built-in component within Ignite is the `AutoImage` component. You can find detailed usage instructions in the [docs](https://github.com/infinitered/ignite/blob/master/docs/Components-AutoImage.md).
+Sign-in is mocked. `SigninScreen` and `SignupScreen` call `setAuthToken(String(Date.now()))` and do not hit a server. The sign-in form prefills a reserved UK drama number (`07700900000`) so the phone validator in `AuthenticationStore` can pass; type any matching UK mobile if you clear it.
 
-How to use your `icon` or `image` assets:
+Native binaries:
 
-```
-import { Image } from 'react-native';
-
-const MyComponent = () => {
-  return (
-    <Image source={require('../assets/images/my_image.png')} />
-  );
-};
+```sh
+yarn build:ios:sim
+yarn build:android:sim
 ```
 
-### ./ignite directory
+Those call EAS local builds (`eas.json` profiles `development`, `development:device`, `preview`, `production`).
 
-The `ignite` directory stores all things Ignite, including CLI and boilerplate items. Here you will find templates you can customize to help you get started with React Native.
+Maestro: `yarn test:maestro` runs `.maestro/FavoritePodcast.yaml` (Ignite podcast demo). `.maestro/Login.yaml` still asserts Ignite "Sign In" copy, not Booksee login.
 
-### ./test directory
+## Project structure
 
-This directory will hold your Jest configs and mocks.
+```
+app/
+  app.tsx                 Root component, fonts, store rehydration
+  components/             Shared UI, Gluestack wrappers, service-user widgets
+  components/serviceUser/DummyData/   Fixture lists for home, bookings, profile
+  config/                 persistNavigation, catchErrors, API_URL
+  DummyData/              Extra booking fixtures
+  i18n/                   Ignite translation files
+  models/                 MST stores (auth, onboarding, walkthrough, episodes)
+  navigators/             App stack, customer tabs, provider tabs, leftover Demo navigator
+  screens/                Auth, splash, customer, provider, leftover Ignite demo
+  services/api/           apisauce client (`getEpisodes` only)
+  styles/                 Shared screen container styles
+  theme/                  Colors, spacing, typography
+  utils/                  Storage, crash reporting stub, dates
+assets/icons              App icons (plus `demo/` from Ignite)
+assets/images             Booksee art (plus Ignite demo podcast art)
+ignite/templates          Ignite generators
+plugins/                  Expo config plugins (splash, Flipper)
+test/                     Jest setup and i18n test
+```
 
-## Running Maestro end-to-end tests
+Entry: `App.tsx` -> `app/app.tsx` -> `AppNavigator`.
 
-Follow our [Maestro Setup](https://ignitecookbook.com/docs/recipes/MaestroSetup) recipe from the [Ignite Cookbook](https://ignitecookbook.com/)!
+## Leftover Ignite demo
 
-## Previous Boilerplates
+Booksee screens sit next to unused Infinite Red demo code. It is still compiled:
 
-- [2018 aka Bowser](https://github.com/infinitered/ignite-bowser)
-- [2017 aka Andross](https://github.com/infinitered/ignite-andross)
-- [2016 aka Ignite 1.0](https://github.com/infinitered/ignite-ir-boilerplate-2016)
+- Screens: `WelcomeScreen`, `LoginScreen`, `DemoCommunityScreen`, `DemoDebugScreen`, `DemoPodcastListScreen`, `DemoShowroomScreen/`
+- Navigator: `app/navigators/DemoNavigator.tsx` (not mounted from `AppNavigator`)
+- Models: `Episode`, `EpisodeStore` (wired on `RootStore`)
+- API: `Api.getEpisodes()` against rss2json + React Native Radio
+- Copy: `app/i18n/*.ts` demo strings
+- Assets: `assets/icons/demo/`, `assets/images/demo/`, plus duplicate Ignite logos under `assets/images/`
+- Maestro: `.maestro/FavoritePodcast.yaml`, `.maestro/Login.yaml`
+- Comments marked `@demo remove-block` / `@demo remove-file`
+
+`LoginScreen` still prefills Ignite demo credentials (`ignite@infinite.red`). That screen is not on the Booksee stack.
+
+Home, search, bookings, cards, and earnings read TypeScript fixtures, not the API. Names and photos in `DummyData` and `assets/images` (for example `Adeola.png`, `Dami.png`, `racheal.png`, `anita-joseph.png`) are UI stand-ins. Confirm they are licensed for public use before a public release.
+
+## Third-party licences
+
+This repo is MIT. Ignite 9.6.3 is MIT. Direct dependencies in `package.json` are MIT or Apache-2.0 compatible as published on npm. No GPL, AGPL, or SSPL packages showed up in that list.
+
+`react-native-datepicker` is unmaintained. `react-native-drawer-layout` is pinned to `4.0.0-alpha.1` (Ignite demo drawer). Neither blocks MIT, but both are stale.
+
+## Contributing
+
+The GitHub repo is private until the owner opens it. When it is public:
+
+1. Open an issue before a large change.
+2. Branch from `migrate` (current default).
+3. Keep Booksee behaviour working: splash -> user type -> mock auth -> customer or provider tabs.
+4. Do not commit `.env`, keystores, `google-services.json`, `GoogleService-Info.plist`, or real customer data.
+5. Run `yarn compile` and `yarn test` before you push.
+6. Pull requests should say what you changed and how you ran it.
+
+## License
+
+MIT. See [LICENSE](LICENSE). Copyright 2026 Timchosen Uzua.

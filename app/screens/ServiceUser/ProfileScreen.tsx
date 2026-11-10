@@ -61,7 +61,7 @@ export const ServiceUserProfileScreen: FC<ProfileScreenProps> = observer(functio
         <Icon icon="userImage" size={48} />
         <View>
           <Text text="Clean Kutz" weight="semiBold" size="lg" />
-          <Text text="anitajoseph@gmail.com" weight="light" size="sm" />
+          <Text text="anita@example.com" weight="light" size="sm" />
         </View>
       </View>
       <View style={styles.topContainer}>
@@ -70,7 +70,7 @@ export const ServiceUserProfileScreen: FC<ProfileScreenProps> = observer(functio
       </View>
       <View>
         <SectionHeader leftText="Personal Details" />
-        <ProfileContent leftText="Mobile Number" rightText="09096631152" />
+        <ProfileContent leftText="Mobile Number" rightText="07700900000" />
         <ProfileContent leftText="Gender" rightText="Female" />
         <ProfileContent
           leftText="Addresses"

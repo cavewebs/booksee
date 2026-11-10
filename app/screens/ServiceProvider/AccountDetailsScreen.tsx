@@ -29,17 +29,17 @@ export const AccountDetailsScreen: FC<AccountDetailsScreenProps> = observer(
         < View style={{ marginTop: 32 }}>
           <View style={styles.bottomGap}>
             <Text size="xs" weight="medium" text="Sort Code" style={styles.firstText} />
-            <Text size="sm" weight="normal" text="9079797073" style={styles.secondText} />
+            <Text size="sm" weight="normal" text="00-00-00" style={styles.secondText} />
           </View>
 
           <View style={styles.bottomGap}>
             <Text size="xs" weight="medium" text="Account Number" style={styles.firstText} />
-            <Text size="sm" weight="normal" text="0237154436" style={styles.secondText} />
+            <Text size="sm" weight="normal" text="00000000" style={styles.secondText} />
           </View>
 
           <View style={styles.bottomGap}>
             <Text size="xs" weight="medium" text="Account Holder Name" style={styles.firstText} />
-            <Text size="sm" weight="normal" text="Ayominde Gbenga" style={styles.secondText} />
+            <Text size="sm" weight="normal" text="Example Account Holder" style={styles.secondText} />
           </View>
 
           <View style={styles.bottomGap}>

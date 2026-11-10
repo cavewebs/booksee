@@ -7,7 +7,6 @@ import { Button, HeaderWithBackButton, ImageUploader, OtherHeader, Screen, Secti
 import { screenContentContainer } from "app/styles/mainStyles"
 import { colors } from "app/theme"
 import { useNavigation } from "@react-navigation/native"
-import { Camera, CameraType } from 'expo-camera';
 
 // import { useStores } from "app/models"
 

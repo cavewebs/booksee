@@ -1,0 +1,6 @@
+declare module "react-native-datepicker"
+declare module "react-native-calendar-picker"
+declare module "react-native-chart-kit"
+declare module "react-native-progress"
+declare module "react-native-root-toast"
+declare module "react-native-vector-icons/*"

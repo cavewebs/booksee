@@ -78,7 +78,7 @@ export const OtpScreen: FC<OtpScreenProps> = observer(function OtpScreen() {
           text="Enter the 6-digit authentication code sent to "
           style={styles.labelText}
         />
-        <Text size="xs" text="+44 909 633 1152" style={styles.phoneNo} />
+        <Text size="xs" text="+44 7700 900000" style={styles.phoneNo} />
 
         <View style={styles.inputWrapper}>
           {otp.map((text, index) => (

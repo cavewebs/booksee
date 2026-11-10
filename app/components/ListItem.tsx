@@ -63,7 +63,7 @@ export interface ListItemProps extends TouchableOpacityProps {
   /**
    * Icon that should appear on the left.
    */
-  leftIcon?: IconTypes
+  leftIcon?: IconTypes | string
   /**
    * An optional tint color for the left icon
    */
@@ -71,7 +71,7 @@ export interface ListItemProps extends TouchableOpacityProps {
   /**
    * Icon that should appear on the right.
    */
-  rightIcon?: IconTypes
+  rightIcon?: IconTypes | string
   /**
    * An optional tint color for the right icon
    */
@@ -89,7 +89,7 @@ export interface ListItemProps extends TouchableOpacityProps {
 }
 
 interface ListItemActionProps {
-  icon?: IconTypes
+  icon?: IconTypes | string
   iconColor?: string
   Component?: ReactElement
   size: number

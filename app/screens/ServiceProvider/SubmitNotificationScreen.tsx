@@ -39,7 +39,7 @@ export const SubmitNotificationScreen: FC<SubmitNotificationScreenProps> = obser
         <Text
           size="sm"
           weight="normal"
-          text="We will be contacted via your phone number +44 239897974 in a few minutes"
+          text="We will be contacted via your phone number +44 7700 900000 in a few minutes"
           style={styles.bottomText}
         />
 

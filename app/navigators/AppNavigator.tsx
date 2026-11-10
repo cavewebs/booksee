@@ -68,6 +68,16 @@ export type OnboardingParamList = {
 export type AppStackParamList = {
   ServiceProvider: NavigatorScreenParams<ServiceProviderTabParamList>
   ServiceUser: NavigatorScreenParams<ServiceUserTabParamList>
+  Login: undefined
+  Welcome: undefined
+  Demo: NavigatorScreenParams<{
+    DemoShowroom: { queryIndex?: string; itemIndex?: string }
+    DemoDebug: undefined
+    DemoPodcastList: undefined
+    DemoCommunity: undefined
+  }>
+  PendingBookings: undefined
+  ServicePoviderServices: undefined
   UserSelection: undefined
   // 🔥 Your screens go here
   SplashOne: undefined
@@ -393,6 +403,12 @@ const AppStack = observer(function AppStack() {
 
 export interface NavigationProps
   extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends AppStackParamList, ServiceUserTabParamList, ServiceProviderTabParamList {}
+  }
+}
 
 export const AppNavigator = observer(function AppNavigator(props: NavigationProps) {
   const colorScheme = useColorScheme()
